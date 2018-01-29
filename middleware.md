@@ -214,6 +214,15 @@ Additional middleware parameters will be passed to the middleware after the `$ne
 
     }
 
+Then assign the middleware to a key in your `app/Http/Kernel.php` file, like mentioned earlier. 
+
+    // Within App\Http\Kernel Class...
+
+    protected $routeMiddleware = [
+		// Add the key to the already registered routes
+        'route' => \App\Http\Middleware\CheckRole::class,
+    ];
+
 Middleware parameters may be specified when defining the route by separating the middleware name and parameters with a `:`. Multiple parameters should be delimited by commas:
 
     Route::put('post/{id}', function ($id) {
